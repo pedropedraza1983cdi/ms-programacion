@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<springProperty name="appname" source="application.name" />
+	<springProperty name="logstash" source="logstash.host" />
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8"
+			class="co.elastic.logging.logback.EcsEncoder">
+			<serviceName>my-application</serviceName>
+			<serviceNodeName>my-application-cluster-node</serviceNodeName>
+			<stackTraceAsArray>true</stackTraceAsArray>
+			<includeOrigin>true</includeOrigin>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ms-programacion
+  cloud:
+    gcp:
+      project-id: ${GCP_PROJECT_ID}
+      credentials:
+        location: file:${GCP_APP_CREDENTIALS}
+      datastore:
+        namespace: {GCP_DATASTORE_NAMESPACE}
+service:
+  config:
+    pubsub:
+      planta:
+        planta1p42: planta-1p42-torres
+  dateFormat: yyyy-MM-dd hh:mm:ss
+  controller:
+    path: programaciones/v1.0/
+server:
+  port: 8080
+
